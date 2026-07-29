@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ibuprofen (Ибупрофен) — фасовки, PZN, инструкция | RxdeInfo</title>
-    <meta name="description" content="Ibuprofen (Ибупрофен • Сироп) — Ибупрофен абз 40мг/мл сироп для детей от 10кг 100мл, Ibuprofen Abz 40mg/ml Sirup Für Kinder Ab 10Kg 100ml. МНН: Ibuprofen. Производитель: AbZ Pharma GmbH. PZN коды, фасовки и наличие.">
+    <meta name="description" content="Ibuprofen (Ибупрофен • Сироп) — Ibuprofen Abz 40mg/ml Sirup Für Kinder Ab 10Kg 100ml, Ибупрофен абз 40мг/мл сироп для детей от 10кг 100мл. МНН: Ibuprofen. Производитель: AbZ Pharma GmbH. PZN коды, фасовки и наличие.">
     <link rel="canonical" href="https://rxdeinfo.com/p/ibuprofen-sirop/">
     
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -199,10 +199,10 @@
             btn.disabled = true;
             btn.innerText = "⏳ Отправка...";
 
-            const textToSend = "🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> " + phone + "\n💬 <b>Детали:</b> " + currentContextMsg;
+            const textToSend = `🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> ${phone}\n💬 <b>Детали:</b> ${currentContextMsg}`;
 
             try {
-                await fetch("https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage", {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({

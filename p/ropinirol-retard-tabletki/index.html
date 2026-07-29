@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ropinirol (Ропинирол) — фасовки, PZN, инструкция | RxdeInfo</title>
-    <meta name="description" content="Ropinirol (Ропинирол • Ретард таблетки) — Ropinirol 1A Pharma 2mg 84St, Ропинирол 1а фарма 2мг 84шт. МНН: s entwickelt. Производитель: 1 A Pharma GmbH. PZN коды, фасовки и наличие.">
+    <meta name="description" content="Ropinirol (Ропинирол • Ретард таблетки) — Ропинирол 1а фарма 2мг 84шт, Ropinirol 1A Pharma 2mg 84St. МНН: s entwickelt. Производитель: 1 A Pharma GmbH. PZN коды, фасовки и наличие.">
     <link rel="canonical" href="https://rxdeinfo.com/p/ropinirol-retard-tabletki/">
     
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -199,10 +199,10 @@
             btn.disabled = true;
             btn.innerText = "⏳ Отправка...";
 
-            const textToSend = "🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> " + phone + "\n💬 <b>Детали:</b> " + currentContextMsg;
+            const textToSend = `🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> ${phone}\n💬 <b>Детали:</b> ${currentContextMsg}`;
 
             try {
-                await fetch("https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage", {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({

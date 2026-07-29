@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Corneregel (Корнерегель) — фасовки, PZN, инструкция | RxdeInfo</title>
-    <meta name="description" content="Corneregel (Корнерегель • Глазные капли) — Корнерегель жидкость эдо глазные капли для заживления ран на глазах 30x0,6 мл, Corneregel Fluid Edo Augentropfen Zur Wundheilung Am Auge 60X0.6ml, Corneregel Fluid Edo Augentropfen Zur Wundheilung Am Auge 10X0.6ml, Corneregel fluid edo — глазные капли для заживления ран на глазу, 10 × 0,6 мл, Корнерегель жидкость эдо глазные капли для заживления ран на глазах 60x0,6 мл, Corneregel Fluid Edo Augentropfen Zur Wundheilung Am Auge 30X0.6ml. МНН: Dexpanthenol. Производитель: Dr. Gerhard Mann Chem.-pharm.Fabrik GmbH. PZN коды, фасовки и наличие.">
+    <meta name="description" content="Corneregel (Корнерегель • Глазные капли) — Corneregel fluid edo — глазные капли для заживления ран на глазу, 10 × 0,6 мл, Corneregel Fluid Edo Augentropfen Zur Wundheilung Am Auge 60X0.6ml, Corneregel Fluid Edo Augentropfen Zur Wundheilung Am Auge 10X0.6ml, Корнерегель жидкость эдо глазные капли для заживления ран на глазах 60x0,6 мл, Corneregel Fluid Edo Augentropfen Zur Wundheilung Am Auge 30X0.6ml, Корнерегель жидкость эдо глазные капли для заживления ран на глазах 30x0,6 мл. МНН: Dexpanthenol. Производитель: Dr. Gerhard Mann Chem.-pharm.Fabrik GmbH. PZN коды, фасовки и наличие.">
     <link rel="canonical" href="https://rxdeinfo.com/p/corneregel-glaznye-kapli/">
     
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -223,10 +223,10 @@
             btn.disabled = true;
             btn.innerText = "⏳ Отправка...";
 
-            const textToSend = "🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> " + phone + "\n💬 <b>Детали:</b> " + currentContextMsg;
+            const textToSend = `🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> ${phone}\n💬 <b>Детали:</b> ${currentContextMsg}`;
 
             try {
-                await fetch("https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage", {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({

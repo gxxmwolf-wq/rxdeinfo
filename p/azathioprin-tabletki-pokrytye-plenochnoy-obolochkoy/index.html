@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Azathioprin (Азатиоприн) — фасовки, PZN, инструкция | RxdeInfo</title>
-    <meta name="description" content="Azathioprin (Азатиоприн • Таблетки, покрытые пленочной оболочкой) — Азатиоприн ал 50мг фта 100шт, Азатиоприн - 1a pharma 50мг таблетки покрытые пленочной оболочкой 100шт, Azathioprin Al 50mg Fta 100St, Azathioprin Al 75mg Fta 100St, Азатиоприн гексал 50мг фил 100шт, Azathioprin - 1A Pharma 50Mg Filmtabletten 100St, Azathioprin Hexal 50mg Fil 100St, Азатиоприн 1a pharma 25мг 100шт, Azathioprin 1A Pharma 25mg 100St, Azathioprin Al 100mg Fta 100St, Азатиоприн ал 25мг фта 100шт, Азатиоприн ал 100мг фта 100шт, Азатиоприн hay100 heunet 100шт, Азатиоприн ал 75мг фта 100шт, Azathioprin Al 25mg Fta 100St, Azathioprin Heu100 Heunet 100St. МНН: Azathio-. Производитель: 1 A Pharma GmbH. PZN коды, фасовки и наличие.">
+    <meta name="description" content="Azathioprin (Азатиоприн • Таблетки, покрытые пленочной оболочкой) — Азатиоприн ал 25мг фта 100шт, Азатиоприн ал 100мг фта 100шт, Азатиоприн hay100 heunet 100шт, Азатиоприн гексал 50мг фил 100шт, Azathioprin Al 75mg Fta 100St, Azathioprin Al 100mg Fta 100St, Azathioprin Al 50mg Fta 100St, Azathioprin Heu100 Heunet 100St, Азатиоприн ал 50мг фта 100шт, Azathioprin 1A Pharma 25mg 100St, Азатиоприн 1a pharma 25мг 100шт, Azathioprin Al 25mg Fta 100St, Azathioprin - 1A Pharma 50Mg Filmtabletten 100St, Азатиоприн - 1a pharma 50мг таблетки покрытые пленочной оболочкой 100шт, Азатиоприн ал 75мг фта 100шт, Azathioprin Hexal 50mg Fil 100St. МНН: Azathio-. Производитель: 1 A Pharma GmbH. PZN коды, фасовки и наличие.">
     <link rel="canonical" href="https://rxdeinfo.com/p/azathioprin-tabletki-pokrytye-plenochnoy-obolochkoy/">
     
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -283,10 +283,10 @@
             btn.disabled = true;
             btn.innerText = "⏳ Отправка...";
 
-            const textToSend = "🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> " + phone + "\n💬 <b>Детали:</b> " + currentContextMsg;
+            const textToSend = `🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> ${phone}\n💬 <b>Детали:</b> ${currentContextMsg}`;
 
             try {
-                await fetch("https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage", {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({

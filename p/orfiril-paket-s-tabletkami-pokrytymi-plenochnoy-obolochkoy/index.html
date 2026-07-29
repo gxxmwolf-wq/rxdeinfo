@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orfiril (Орфирил) — фасовки, PZN, инструкция | RxdeInfo</title>
-    <meta name="description" content="Orfiril (Орфирил • Пакет с таблетками, покрытыми пленочной оболочкой) — Orfiril Long 1000mg Minita 200St, Орфирил лонг 1000мг минита 200шт, Orfiril Long 500mg Retard-minitabletten Im Beutel 200St, Орфирил лонг 500мг ретард-мини таблетки в саше 200шт. МНН: Valproinsäure. Производитель: Desitin Arzneimittel GmbH. PZN коды, фасовки и наличие.">
+    <meta name="description" content="Orfiril (Орфирил • Пакет с таблетками, покрытыми пленочной оболочкой) — Орфирил лонг 1000мг минита 200шт, Orfiril Long 500mg Retard-minitabletten Im Beutel 200St, Орфирил лонг 500мг ретард-мини таблетки в саше 200шт, Orfiril Long 1000mg Minita 200St. МНН: Valproinsäure. Производитель: Desitin Arzneimittel GmbH. PZN коды, фасовки и наличие.">
     <link rel="canonical" href="https://rxdeinfo.com/p/orfiril-paket-s-tabletkami-pokrytymi-plenochnoy-obolochkoy/">
     
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -211,10 +211,10 @@
             btn.disabled = true;
             btn.innerText = "⏳ Отправка...";
 
-            const textToSend = "🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> " + phone + "\n💬 <b>Детали:</b> " + currentContextMsg;
+            const textToSend = `🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> ${phone}\n💬 <b>Детали:</b> ${currentContextMsg}`;
 
             try {
-                await fetch("https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage", {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({

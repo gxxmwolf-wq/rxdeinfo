@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[Austria] ([Австрия]) — фасовки, PZN, инструкция | RxdeInfo</title>
-    <meta name="description" content="[Austria] ([Австрия] • Таблетки) — [Австрия] Таблетки Рибельсус 3 мг, 30 шт., [Austria] Rybelsus Tabletten 3mg 30St. МНН: Semaglutidum. Производитель: 
+    <meta name="description" content="[Austria] ([Австрия] • Таблетки) — [Austria] Rybelsus Tabletten 3mg 30St, [Австрия] Таблетки Рибельсус 3 мг, 30 шт.. МНН: Semaglutidum. Производитель: 
 Novo Nordisk
 . PZN коды, фасовки и наличие.">
     <link rel="canonical" href="https://rxdeinfo.com/p/austria-tabletki/">
@@ -207,10 +207,10 @@ Novo Nordisk
             btn.disabled = true;
             btn.innerText = "⏳ Отправка...";
 
-            const textToSend = "🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> " + phone + "\n💬 <b>Детали:</b> " + currentContextMsg;
+            const textToSend = `🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> ${phone}\n💬 <b>Детали:</b> ${currentContextMsg}`;
 
             try {
-                await fetch("https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage", {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
