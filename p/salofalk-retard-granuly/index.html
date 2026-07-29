@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salofalk (Салофальк) — фасовки, PZN, инструкция | RxdeInfo</title>
-    <meta name="description" content="Salofalk (Салофальк • Ретард гранулы) — Salofalk Granu Stix 1000Mg 150St, Salofalk Granu Stix 3G 50St, Салофальк грану стикс 1000мг 50шт, Салофальк грану стикс 500мг 100шт, Salofalk Granu Stix 500mg 100St, Салофальк грану стикс 1000мг 100шт, Салофальк грану стикс 1,5г 100шт, Salofalk Granu Stix 3G 100St, Салофальк грану стикс 500мг 50шт, Салофальк грану стикс 500мг 300шт, Салофальк грану стикс 1000мг 150шт, Salofalk Granu Stix 1000Mg 50St, Salofalk Granu Stix 1.5G 100St, Салофальк granu stix 3g 100шт, Salofalk Granu Stix 500mg 300St, Салофальк granu stix 3g 50шт, Salofalk Granu Stix 500mg 50St, Salofalk Granu Stix 1000Mg 100St. МНН: Mesalazin. Производитель: Dr. Falk Pharma GmbH. PZN коды, фасовки и наличие.">
+    <meta name="description" content="Salofalk (Салофальк • Ретард гранулы) — Салофальк грану стикс 1000мг 150шт, Salofalk Granu Stix 1.5G 100St, Салофальк грану стикс 500мг 300шт, Salofalk Granu Stix 1000Mg 150St, Salofalk Granu Stix 3G 50St, Salofalk Granu Stix 3G 100St, Салофальк granu stix 3g 100шт, Salofalk Granu Stix 1000Mg 100St, Salofalk Granu Stix 500mg 50St, Salofalk Granu Stix 500mg 300St, Салофальк грану стикс 500мг 100шт, Салофальк грану стикс 1,5г 100шт, Салофальк грану стикс 500мг 50шт, Salofalk Granu Stix 1000Mg 50St, Салофальк granu stix 3g 50шт, Salofalk Granu Stix 500mg 100St, Салофальк грану стикс 1000мг 50шт, Салофальк грану стикс 1000мг 100шт. МНН: Mesalazin. Производитель: Dr. Falk Pharma GmbH. PZN коды, фасовки и наличие.">
     <link rel="canonical" href="https://rxdeinfo.com/p/salofalk-retard-granuly/">
     
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -222,7 +222,7 @@
     </footer>
 
     
-    <!-- Модальное окно связи (Точная копия твоего рабочего тестового окна) -->
+    <!-- Модальное окно связи -->
     <div id="contactOverlay" class="fixed inset-0 z-[99999] hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4" onclick="closeContact()">
         <div class="bg-white rounded-2xl w-full max-w-md p-6 shadow-2xl flex flex-col relative max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
             
@@ -298,7 +298,6 @@
             closeContact();
         }
 
-        // Ровно твоя рабочая функция отправки
         async function submitToTelegramBot() {
             const phone = document.getElementById('clientPhone').value.trim();
             const btn = document.getElementById('submitBtn');
@@ -314,27 +313,29 @@
             const textToSend = `🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> ${phone}\n💬 <b>Детали:</b> ${currentContextMsg}`;
 
             try {
-                const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-                const response = await fetch(url, {
+                const response = await fetch("https://rxde.online/send.php", {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        chat_id: CHAT_ID,
-                        text: textToSend,
-                        parse_mode: 'HTML'
-                    })
+                    body: JSON.stringify({ text: textToSend })
                 });
 
-                if (response.ok) {
-                    showSuccessState();
-                } else {
-                    showSuccessState(); 
+                if (!response.ok) {
+                    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            chat_id: CHAT_ID,
+                            text: textToSend,
+                            parse_mode: 'HTML'
+                        })
+                    });
                 }
             } catch (e) {
-                showSuccessState();
+                console.log("Фолбэк обработан");
             } finally {
                 btn.disabled = false;
                 btn.innerText = "Отправить запрос";
+                showSuccessState();
             }
         }
 

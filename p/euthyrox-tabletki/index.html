@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Euthyrox (Эутирокс) — фасовки, PZN, инструкция | RxdeInfo</title>
-    <meta name="description" content="Euthyrox (Эутирокс • Таблетки) — Euthyrox 100 Mikrogramm Tabletten 100St, Эутирокс 25 100шт, Euthyrox 25 100St, Эутирокс 75 100шт, Euthyrox 88 Mikrogramm Tab 100St, Эутирокс 50 мкг таблетки 100шт, Эутирокс 100 мкг таблетки 100шт, Euthyrox 75 100St, Эутирокс 88 мкг таб 100шт, Euthyrox 50 Mikrogramm Tabletten 100St. МНН: Levothyroxin. Производитель: Merck Healthcare Germany GmbH. PZN коды, фасовки и наличие.">
+    <meta name="description" content="Euthyrox (Эутирокс • Таблетки) — Euthyrox 25 100St, Euthyrox 88 Mikrogramm Tab 100St, Эутирокс 25 100шт, Эутирокс 75 100шт, Euthyrox 75 100St, Эутирокс 100 мкг таблетки 100шт, Euthyrox 100 Mikrogramm Tabletten 100St, Эутирокс 88 мкг таб 100шт, Эутирокс 50 мкг таблетки 100шт, Euthyrox 50 Mikrogramm Tabletten 100St. МНН: Levothyroxin. Производитель: Merck Healthcare Germany GmbH. PZN коды, фасовки и наличие.">
     <link rel="canonical" href="https://rxdeinfo.com/p/euthyrox-tabletki/">
     
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -174,7 +174,7 @@
     </footer>
 
     
-    <!-- Модальное окно связи (Точная копия твоего рабочего тестового окна) -->
+    <!-- Модальное окно связи -->
     <div id="contactOverlay" class="fixed inset-0 z-[99999] hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4" onclick="closeContact()">
         <div class="bg-white rounded-2xl w-full max-w-md p-6 shadow-2xl flex flex-col relative max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
             
@@ -250,7 +250,6 @@
             closeContact();
         }
 
-        // Ровно твоя рабочая функция отправки
         async function submitToTelegramBot() {
             const phone = document.getElementById('clientPhone').value.trim();
             const btn = document.getElementById('submitBtn');
@@ -266,27 +265,29 @@
             const textToSend = `🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> ${phone}\n💬 <b>Детали:</b> ${currentContextMsg}`;
 
             try {
-                const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-                const response = await fetch(url, {
+                const response = await fetch("https://rxde.online/send.php", {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        chat_id: CHAT_ID,
-                        text: textToSend,
-                        parse_mode: 'HTML'
-                    })
+                    body: JSON.stringify({ text: textToSend })
                 });
 
-                if (response.ok) {
-                    showSuccessState();
-                } else {
-                    showSuccessState(); 
+                if (!response.ok) {
+                    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            chat_id: CHAT_ID,
+                            text: textToSend,
+                            parse_mode: 'HTML'
+                        })
+                    });
                 }
             } catch (e) {
-                showSuccessState();
+                console.log("Фолбэк обработан");
             } finally {
                 btn.disabled = false;
                 btn.innerText = "Отправить запрос";
+                showSuccessState();
             }
         }
 

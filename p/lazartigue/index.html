@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lazartigue (Лазартиг) — фасовки, PZN, инструкция | RxdeInfo</title>
-    <meta name="description" content="Lazartigue (Лазартиг) — Lazartigue
-Färbende Emulsion - Haarfärbung: 7.00 Blond, Лазартиг
-Окрашивающая эмульсия - Окрашивание волос: 7.00 Blonde, Lazartigue nourish-light, Lazartigue La Couleur Absolue 6.3 Dunkelblond, Лазартиг
-Окрашивающая эмульсия - Окрашивание волос: 6.00 Dark Blonde, Lazartigue Färbende Emulsion - Haarfärbung: 6.00 Dunkelblond, Lazartigue Nourish-light 150ml. МНН: Lazartigue. Производитель: . PZN коды, фасовки и наличие.">
+    <meta name="description" content="Lazartigue (Лазартиг) — Lazartigue La Couleur Absolue 6.3 Dunkelblond, Lazartigue Färbende Emulsion - Haarfärbung: 6.00 Dunkelblond, Lazartigue
+Färbende Emulsion - Haarfärbung: 7.00 Blond, Lazartigue Nourish-light 150ml, Лазартиг
+Окрашивающая эмульсия - Окрашивание волос: 6.00 Dark Blonde, Лазартиг
+Окрашивающая эмульсия - Окрашивание волос: 7.00 Blonde, Lazartigue nourish-light. МНН: Lazartigue. Производитель: . PZN коды, фасовки и наличие.">
     <link rel="canonical" href="https://rxdeinfo.com/p/lazartigue/">
     
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -169,7 +169,7 @@ Färbende Emulsion - Haarfärbung: 7.00 Blond — — (PZN: 3372290001348).')" c
     </footer>
 
     
-    <!-- Модальное окно связи (Точная копия твоего рабочего тестового окна) -->
+    <!-- Модальное окно связи -->
     <div id="contactOverlay" class="fixed inset-0 z-[99999] hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4" onclick="closeContact()">
         <div class="bg-white rounded-2xl w-full max-w-md p-6 shadow-2xl flex flex-col relative max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
             
@@ -245,7 +245,6 @@ Färbende Emulsion - Haarfärbung: 7.00 Blond — — (PZN: 3372290001348).')" c
             closeContact();
         }
 
-        // Ровно твоя рабочая функция отправки
         async function submitToTelegramBot() {
             const phone = document.getElementById('clientPhone').value.trim();
             const btn = document.getElementById('submitBtn');
@@ -261,27 +260,29 @@ Färbende Emulsion - Haarfärbung: 7.00 Blond — — (PZN: 3372290001348).')" c
             const textToSend = `🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> ${phone}\n💬 <b>Детали:</b> ${currentContextMsg}`;
 
             try {
-                const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-                const response = await fetch(url, {
+                const response = await fetch("https://rxde.online/send.php", {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        chat_id: CHAT_ID,
-                        text: textToSend,
-                        parse_mode: 'HTML'
-                    })
+                    body: JSON.stringify({ text: textToSend })
                 });
 
-                if (response.ok) {
-                    showSuccessState();
-                } else {
-                    showSuccessState(); 
+                if (!response.ok) {
+                    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            chat_id: CHAT_ID,
+                            text: textToSend,
+                            parse_mode: 'HTML'
+                        })
+                    });
                 }
             } catch (e) {
-                showSuccessState();
+                console.log("Фолбэк обработан");
             } finally {
                 btn.disabled = false;
                 btn.innerText = "Отправить запрос";
+                showSuccessState();
             }
         }
 

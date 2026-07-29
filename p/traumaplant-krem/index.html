@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Traumaplant (Травмаплант) — фасовки, PZN, инструкция | RxdeInfo</title>
-    <meta name="description" content="Traumaplant (Травмаплант • Крем) — Травмаплант обезболивающий крем 150г, Traumaplant Schmerzcreme 150g. МНН: Beinwell-Zubereitung. Производитель: MCM KLOSTERFRAU Vertr. GmbH. PZN коды, фасовки и наличие.">
+    <meta name="description" content="Traumaplant (Травмаплант • Крем) — Traumaplant Schmerzcreme 150g, Травмаплант обезболивающий крем 150г. МНН: Beinwell-Zubereitung. Производитель: MCM KLOSTERFRAU Vertr. GmbH. PZN коды, фасовки и наличие.">
     <link rel="canonical" href="https://rxdeinfo.com/p/traumaplant-krem/">
     
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -126,7 +126,7 @@
     </footer>
 
     
-    <!-- Модальное окно связи (Точная копия твоего рабочего тестового окна) -->
+    <!-- Модальное окно связи -->
     <div id="contactOverlay" class="fixed inset-0 z-[99999] hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4" onclick="closeContact()">
         <div class="bg-white rounded-2xl w-full max-w-md p-6 shadow-2xl flex flex-col relative max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
             
@@ -202,7 +202,6 @@
             closeContact();
         }
 
-        // Ровно твоя рабочая функция отправки
         async function submitToTelegramBot() {
             const phone = document.getElementById('clientPhone').value.trim();
             const btn = document.getElementById('submitBtn');
@@ -218,27 +217,29 @@
             const textToSend = `🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> ${phone}\n💬 <b>Детали:</b> ${currentContextMsg}`;
 
             try {
-                const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-                const response = await fetch(url, {
+                const response = await fetch("https://rxde.online/send.php", {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        chat_id: CHAT_ID,
-                        text: textToSend,
-                        parse_mode: 'HTML'
-                    })
+                    body: JSON.stringify({ text: textToSend })
                 });
 
-                if (response.ok) {
-                    showSuccessState();
-                } else {
-                    showSuccessState(); 
+                if (!response.ok) {
+                    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            chat_id: CHAT_ID,
+                            text: textToSend,
+                            parse_mode: 'HTML'
+                        })
+                    });
                 }
             } catch (e) {
-                showSuccessState();
+                console.log("Фолбэк обработан");
             } finally {
                 btn.disabled = false;
                 btn.innerText = "Отправить запрос";
+                showSuccessState();
             }
         }
 
