@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[Bulgaria] ([Bulgaria]) — фасовки, PZN, инструкция | RxdeInfo</title>
-    <meta name="description" content="[Bulgaria] ([Bulgaria] • Таблетки) — [Bulgaria] Denamarin 225mg for medium dogs 30tab, [Bulgaria] Панадол Оптизорб 500 мг 24 таб, [Болгария] Денамарин 225 мг для средних собак 30 таблеток, [Bulgaria] Panadol OptiZorb 500mg 24 St. МНН: Paracetamol. Производитель: GlaxoSmithKline. PZN коды, фасовки и наличие.">
+    <meta name="description" content="[Bulgaria] ([Bulgaria] • Таблетки) — [Bulgaria] Панадол Оптизорб 500 мг 24 таб, [Болгария] Денамарин 225 мг для средних собак 30 таблеток, [Bulgaria] Panadol OptiZorb 500mg 24 St, [Bulgaria] Denamarin 225mg for medium dogs 30tab. МНН: Paracetamol. Производитель: GlaxoSmithKline. PZN коды, фасовки и наличие.">
     <link rel="canonical" href="https://rxdeinfo.com/p/bulgaria-tabletki/">
     
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -22,6 +22,27 @@
     <style>
         .font-rx-brand { font-family: 'Playfair Display', Georgia, serif; }
     </style>
+    
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "[Bulgaria] ([Bulgaria] • Таблетки)",
+          "image": "https://rxde.online/img/B0000002.jpg",
+          "description": "Информационный справочник по препарату [Bulgaria]. МНН: Paracetamol. Производитель: GlaxoSmithKline.",
+          "brand": {
+            "@type": "Brand",
+            "name": "[Bulgaria]"
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "EUR",
+            "price": "0.00",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+        </script>
+        
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased font-sans flex flex-col min-h-screen">
     <header class="bg-white border-b border-slate-200/80 py-4 px-6 sticky top-0 z-50 backdrop-blur-md bg-white/90">
@@ -36,10 +57,8 @@
         
         <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-sm">
             <div class="flex flex-col sm:flex-row gap-6 mb-6 items-start">
-                
-                <!-- Точно восстановленная верстка блока увеличения фото -->
                 <div class="bg-slate-50 rounded-2xl p-3 border border-slate-100 flex-shrink-0 cursor-zoom-in group relative" onclick="openPhoto('https://rxde.online/img/B0000002.jpg')">
-                    <img src="https://rxde.online/img/B0000002.jpg" loading="lazy" alt="[Bulgaria]" onerror="this.src='https://via.placeholder.com/200?text=No+Photo'" class="w-40 h-40 sm:w-48 sm:h-48 object-contain transition group-hover:scale-105">
+                    <img src="https://rxde.online/img/B0000002.jpg" loading="lazy" alt="Препарат [Bulgaria] ([Bulgaria] • Таблетки) — PZN B0000002" title="Препарат [Bulgaria] ([Bulgaria] • Таблетки) — PZN B0000002" onerror="this.src='https://via.placeholder.com/200?text=No+Photo'" class="w-40 h-40 sm:w-48 sm:h-48 object-contain transition group-hover:scale-105">
                     <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition rounded-2xl flex items-center justify-center">
                         <span class="bg-emerald-800/80 text-white text-[10px] font-bold px-2 py-1 rounded-md backdrop-blur-sm">Увеличить</span>
                     </div>
@@ -196,7 +215,9 @@
             btn.disabled = true;
             btn.innerText = "⏳ Отправка...";
 
-            const textToSend = `🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> ${phone}\n💬 <b>Детали:</b> ${currentContextMsg}`;
+            // Кликабельная ссылка tel: в Telegram
+            const cleanPhone = phone.replace(/[^\d+]/g, '');
+            const textToSend = `🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> <a href="tel:${cleanPhone}">${phone}</a>\n💬 <b>Детали:</b> ${currentContextMsg}`;
 
             try {
                 await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {

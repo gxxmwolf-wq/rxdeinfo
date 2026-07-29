@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eucerin (Eucerin) — фасовки, PZN, инструкция | RxdeInfo</title>
-    <meta name="description" content="Eucerin (Eucerin • Крем) — Eucerin sun oil control гель-крем для лица lsf 50+ 50мл, Eucerin hydro protect ultralight face sun fluid lsf 50+ 50ml, Eucerin Sun Pigment Control Getönte Face Gel-creme Lsf50+ 50ml, Eucerin sun pigment control тонирующий гель-крем для лица lsf50+ 50 мл, Eucerin Sensitive Protect Face Sun Creme Lsf 50+ 50ml, Eucerin Sun Oil Control Face Gel-creme Lsf 50+ 50ml, Eucerin pigment control face sun fluid lsf 50+ 50ml, Eucerin Sun Oil Control Face Gel-creme Lsf 30 50ml, Eucerin sensitive protect face sun cream lsf 50+ 50ml, Eucerin Photoaging Control Face Sun Fluid Lsf 50+ 50ml, Eucerin photoaging control face sun fluid lsf 50+ 50ml, Eucerin sun oil control гель-крем для лица lsf 30 50 мл, Eucerin Hydro Protect Ultraleichtes Face Sun Fluid Lsf 50+ 50ml, Eucerin Pigment Control Face Sun Fluid Lsf 50+ 50ml. МНН: Компонентный состав. Производитель: Beiersdorf AG Eucerin. PZN коды, фасовки и наличие.">
+    <meta name="description" content="Eucerin (Eucerin • Крем) — Eucerin Hydro Protect Ultraleichtes Face Sun Fluid Lsf 50+ 50ml, Eucerin Sun Pigment Control Getönte Face Gel-creme Lsf50+ 50ml, Eucerin Sun Oil Control Face Gel-creme Lsf 30 50ml, Eucerin sun oil control гель-крем для лица lsf 50+ 50мл, Eucerin hydro protect ultralight face sun fluid lsf 50+ 50ml, Eucerin Photoaging Control Face Sun Fluid Lsf 50+ 50ml, Eucerin photoaging control face sun fluid lsf 50+ 50ml, Eucerin Pigment Control Face Sun Fluid Lsf 50+ 50ml, Eucerin sensitive protect face sun cream lsf 50+ 50ml, Eucerin Sensitive Protect Face Sun Creme Lsf 50+ 50ml, Eucerin sun oil control гель-крем для лица lsf 30 50 мл, Eucerin sun pigment control тонирующий гель-крем для лица lsf50+ 50 мл, Eucerin Sun Oil Control Face Gel-creme Lsf 50+ 50ml, Eucerin pigment control face sun fluid lsf 50+ 50ml. МНН: Компонентный состав. Производитель: Beiersdorf AG Eucerin. PZN коды, фасовки и наличие.">
     <link rel="canonical" href="https://rxdeinfo.com/p/eucerin-krem/">
     
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -22,6 +22,27 @@
     <style>
         .font-rx-brand { font-family: 'Playfair Display', Georgia, serif; }
     </style>
+    
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "Eucerin (Eucerin • Крем)",
+          "image": "https://rxde.online/img/14292845.jpg",
+          "description": "Информационный справочник по препарату Eucerin. МНН: Компонентный состав. Производитель: Beiersdorf AG Eucerin.",
+          "brand": {
+            "@type": "Brand",
+            "name": "Eucerin"
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "EUR",
+            "price": "0.00",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+        </script>
+        
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased font-sans flex flex-col min-h-screen">
     <header class="bg-white border-b border-slate-200/80 py-4 px-6 sticky top-0 z-50 backdrop-blur-md bg-white/90">
@@ -36,10 +57,8 @@
         
         <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-sm">
             <div class="flex flex-col sm:flex-row gap-6 mb-6 items-start">
-                
-                <!-- Точно восстановленная верстка блока увеличения фото -->
                 <div class="bg-slate-50 rounded-2xl p-3 border border-slate-100 flex-shrink-0 cursor-zoom-in group relative" onclick="openPhoto('https://rxde.online/img/14292845.jpg')">
-                    <img src="https://rxde.online/img/14292845.jpg" loading="lazy" alt="Eucerin" onerror="this.src='https://via.placeholder.com/200?text=No+Photo'" class="w-40 h-40 sm:w-48 sm:h-48 object-contain transition group-hover:scale-105">
+                    <img src="https://rxde.online/img/14292845.jpg" loading="lazy" alt="Препарат Eucerin (Eucerin • Крем) — PZN 14292845" title="Препарат Eucerin (Eucerin • Крем) — PZN 14292845" onerror="this.src='https://via.placeholder.com/200?text=No+Photo'" class="w-40 h-40 sm:w-48 sm:h-48 object-contain transition group-hover:scale-105">
                     <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition rounded-2xl flex items-center justify-center">
                         <span class="bg-emerald-800/80 text-white text-[10px] font-bold px-2 py-1 rounded-md backdrop-blur-sm">Увеличить</span>
                     </div>
@@ -256,7 +275,9 @@
             btn.disabled = true;
             btn.innerText = "⏳ Отправка...";
 
-            const textToSend = `🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> ${phone}\n💬 <b>Детали:</b> ${currentContextMsg}`;
+            // Кликабельная ссылка tel: в Telegram
+            const cleanPhone = phone.replace(/[^\d+]/g, '');
+            const textToSend = `🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> <a href="tel:${cleanPhone}">${phone}</a>\n💬 <b>Детали:</b> ${currentContextMsg}`;
 
             try {
                 await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
