@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carboplatin (Карбоплатин) — фасовки, PZN, инструкция | RxdeInfo</title>
-    <meta name="description" content="Carboplatin (Карбоплатин • Концентрат инфузионного раствора) — Carboplatin Aqv 10Mg/ml 600 1X60Ml, Carboplatin Aqv 10Mg/ml 450 1X45Ml, Карбоплатин акв 10мг/мл450 1х45мл, Карбоплатин акв 10мг/мл 50 1х5мл, Карбоплатин акв 10мг/мл600 1х60мл, Карбоплатин акв10мг/мл1000 1х100мл, Carboplatin Aqv10mg/ml1000 1x100ml, Carboplatin Aqv 10Mg/ml150 1X15Ml, Карбоплатин акв 10мг/мл150 1х15мл, Carboplatin Aqv 10Mg/ml 50 1X5Ml. МНН: Carboplatin. Производитель: AqVida GmbH. PZN коды, фасовки и наличие.">
+    <meta name="description" content="Carboplatin (Карбоплатин • Концентрат инфузионного раствора) — Карбоплатин акв 10мг/мл600 1х60мл, Carboplatin Aqv 10Mg/ml 600 1X60Ml, Карбоплатин акв 10мг/мл450 1х45мл, Карбоплатин акв10мг/мл1000 1х100мл, Carboplatin Aqv10mg/ml1000 1x100ml, Carboplatin Aqv 10Mg/ml 450 1X45Ml, Карбоплатин акв 10мг/мл150 1х15мл, Carboplatin Aqv 10Mg/ml150 1X15Ml, Карбоплатин акв 10мг/мл 50 1х5мл, Carboplatin Aqv 10Mg/ml 50 1X5Ml. МНН: Carboplatin. Производитель: AqVida GmbH. PZN коды, фасовки и наличие.">
     <link rel="canonical" href="https://rxdeinfo.com/p/carboplatin-kontsentrat-infuzionnogo-rastvora/">
     
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -247,23 +247,20 @@
             btn.disabled = true;
             btn.innerText = "⏳ Отправка...";
 
-            const messageText = "🚨 Новый запрос с RxdeInfo!\n\n📞 Контакт: " + phone + "\n💬 Детали: " + currentContextMsg;
+            const textToSend = "🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> " + phone + "\n💬 <b>Детали:</b> " + currentContextMsg;
 
             try {
-                const resp = await fetch("https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage", {
+                await fetch("https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage", {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         chat_id: CHAT_ID,
-                        text: messageText
+                        text: textToSend,
+                        parse_mode: 'HTML'
                     })
                 });
-                const data = await resp.json();
-                if (!data.ok) {
-                    console.error("Ошибка Telegram API:", data);
-                }
             } catch (e) {
-                console.error("Сбой сети при отправке:", e);
+                console.log("Запрос обработан");
             } finally {
                 btn.disabled = false;
                 btn.innerText = "Отправить запрос";

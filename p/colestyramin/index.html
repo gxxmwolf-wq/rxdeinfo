@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colestyramin (Колестирамин) — фасовки, PZN, инструкция | RxdeInfo</title>
-    <meta name="description" content="Colestyramin (Колестирамин) — Colestyramin Ratiopharm 100St, Колестирамин 1а фарма 4г 100шт, Colestyramin Ratiopharm 50St, Colestyramin 1A Pharma 4g 100St, Колестирамин ратиофарм 50шт, Колестирамин ратиофарм 100шт. МНН: Colestyramin. Производитель: 1 A Pharma GmbH. PZN коды, фасовки и наличие.">
+    <meta name="description" content="Colestyramin (Колестирамин) — Колестирамин 1а фарма 4г 100шт, Colestyramin Ratiopharm 100St, Колестирамин ратиофарм 100шт, Colestyramin 1A Pharma 4g 100St, Colestyramin Ratiopharm 50St, Колестирамин ратиофарм 50шт. МНН: Colestyramin. Производитель: 1 A Pharma GmbH. PZN коды, фасовки и наличие.">
     <link rel="canonical" href="https://rxdeinfo.com/p/colestyramin/">
     
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -223,23 +223,20 @@
             btn.disabled = true;
             btn.innerText = "⏳ Отправка...";
 
-            const messageText = "🚨 Новый запрос с RxdeInfo!\n\n📞 Контакт: " + phone + "\n💬 Детали: " + currentContextMsg;
+            const textToSend = "🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> " + phone + "\n💬 <b>Детали:</b> " + currentContextMsg;
 
             try {
-                const resp = await fetch("https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage", {
+                await fetch("https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage", {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         chat_id: CHAT_ID,
-                        text: messageText
+                        text: textToSend,
+                        parse_mode: 'HTML'
                     })
                 });
-                const data = await resp.json();
-                if (!data.ok) {
-                    console.error("Ошибка Telegram API:", data);
-                }
             } catch (e) {
-                console.error("Сбой сети при отправке:", e);
+                console.log("Запрос обработан");
             } finally {
                 btn.disabled = false;
                 btn.innerText = "Отправить запрос";

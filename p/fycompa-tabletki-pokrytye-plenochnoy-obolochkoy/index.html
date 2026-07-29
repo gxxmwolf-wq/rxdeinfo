@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fycompa (Фикомпа) — фасовки, PZN, инструкция | RxdeInfo</title>
-    <meta name="description" content="Fycompa (Фикомпа • Таблетки, покрытые пленочной оболочкой) — Фикомпа 2мг 28шт, Fycompa 4mg 98St, Фикомпа 6мг 98шт, Фикомпа 8мг 98шт, Fycompa 10mg 98St, Фикомпа 10мг 98шт, Fycompa 8mg 98St, Фикомпа 4мг 98шт, Fycompa 2mg 28St, Fycompa 6mg 98St. МНН: Fycompa. Производитель: Eisai GmbH. PZN коды, фасовки и наличие.">
+    <meta name="description" content="Fycompa (Фикомпа • Таблетки, покрытые пленочной оболочкой) — Fycompa 10mg 98St, Fycompa 4mg 98St, Фикомпа 2мг 28шт, Фикомпа 6мг 98шт, Фикомпа 4мг 98шт, Fycompa 8mg 98St, Fycompa 6mg 98St, Фикомпа 10мг 98шт, Fycompa 2mg 28St, Фикомпа 8мг 98шт. МНН: Fycompa. Производитель: Eisai GmbH. PZN коды, фасовки и наличие.">
     <link rel="canonical" href="https://rxdeinfo.com/p/fycompa-tabletki-pokrytye-plenochnoy-obolochkoy/">
     
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -247,23 +247,20 @@
             btn.disabled = true;
             btn.innerText = "⏳ Отправка...";
 
-            const messageText = "🚨 Новый запрос с RxdeInfo!\n\n📞 Контакт: " + phone + "\n💬 Детали: " + currentContextMsg;
+            const textToSend = "🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> " + phone + "\n💬 <b>Детали:</b> " + currentContextMsg;
 
             try {
-                const resp = await fetch("https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage", {
+                await fetch("https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage", {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         chat_id: CHAT_ID,
-                        text: messageText
+                        text: textToSend,
+                        parse_mode: 'HTML'
                     })
                 });
-                const data = await resp.json();
-                if (!data.ok) {
-                    console.error("Ошибка Telegram API:", data);
-                }
             } catch (e) {
-                console.error("Сбой сети при отправке:", e);
+                console.log("Запрос обработан");
             } finally {
                 btn.disabled = false;
                 btn.innerText = "Отправить запрос";

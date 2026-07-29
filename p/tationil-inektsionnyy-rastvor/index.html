@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tationil® ([Италия]) — фасовки, PZN, инструкция | RxdeInfo</title>
-    <meta name="description" content="Tationil® ([Италия] • Инъекционный раствор) — Tationil® 600mg/4ml polvere e solvente r per soluzione iniettabile glutatione
-flaconcini + 10 flaconcini polvere + 10 fiale solvente [Italy], [Италия] Татионил 600мг/4мл 10флаконов. МНН: Glutathione. Производитель: Bayer. PZN коды, фасовки и наличие.">
+    <meta name="description" content="Tationil® ([Италия] • Инъекционный раствор) — [Италия] Татионил 600мг/4мл 10флаконов, Tationil® 600mg/4ml polvere e solvente r per soluzione iniettabile glutatione
+flaconcini + 10 flaconcini polvere + 10 fiale solvente [Italy]. МНН: Glutathione. Производитель: Bayer. PZN коды, фасовки и наличие.">
     <link rel="canonical" href="https://rxdeinfo.com/p/tationil-inektsionnyy-rastvor/">
     
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -202,23 +202,20 @@ flaconcini + 10 flaconcini polvere + 10 fiale solvente [Italy] 600mg/4ml 10fl (P
             btn.disabled = true;
             btn.innerText = "⏳ Отправка...";
 
-            const messageText = "🚨 Новый запрос с RxdeInfo!\n\n📞 Контакт: " + phone + "\n💬 Детали: " + currentContextMsg;
+            const textToSend = "🚨 <b>Новый запрос с RxdeInfo!</b>\n\n📞 <b>Контакт:</b> " + phone + "\n💬 <b>Детали:</b> " + currentContextMsg;
 
             try {
-                const resp = await fetch("https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage", {
+                await fetch("https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage", {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         chat_id: CHAT_ID,
-                        text: messageText
+                        text: textToSend,
+                        parse_mode: 'HTML'
                     })
                 });
-                const data = await resp.json();
-                if (!data.ok) {
-                    console.error("Ошибка Telegram API:", data);
-                }
             } catch (e) {
-                console.error("Сбой сети при отправке:", e);
+                console.log("Запрос обработан");
             } finally {
                 btn.disabled = false;
                 btn.innerText = "Отправить запрос";
